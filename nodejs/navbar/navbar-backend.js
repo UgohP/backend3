@@ -1,20 +1,20 @@
 const http = require("http");
 const fs = require("fs");
 
-const homePage = fs.readFileSync("./navbar/navbar.html");
-const homeStyles = fs.readFileSync("./navbar/navbar.css");
-const homeJs = fs.readFileSync("./navbar/navbar.js");
-const logo = fs.readFileSync("./navbar/logo.svg");
-const index = fs.readFileSync("./navbar/home.html");
-const indexStyles = fs.readFileSync("./navbar/home.css");
-const aboutPage = fs.readFileSync("./navbar/about.html");
-const aboutPageStyles = fs.readFileSync("./navbar/about.css");
-const team1 = fs.readFileSync("./navbar/team1.png");
-const team2 = fs.readFileSync("./navbar/team2.png");
-const team3 = fs.readFileSync("./navbar/team3.png");
-const contactPage = fs.readFileSync("./navbar/contact.html");
-const contactPageStyles = fs.readFileSync("./navbar/contact.css");
-const bgImg = fs.readFileSync("./navbar/bg-img.webp");
+const homePage = fs.readFileSync("./navbar.html");
+const homeStyles = fs.readFileSync("./navbar.css");
+const homeJs = fs.readFileSync("./navbar.js");
+const logo = fs.readFileSync("./logo.svg");
+const index = fs.readFileSync("./home.html");
+const indexStyles = fs.readFileSync("./home.css");
+const aboutPage = fs.readFileSync("./about.html");
+const aboutPageStyles = fs.readFileSync("./about.css");
+const team1 = fs.readFileSync("./team1.png");
+const team2 = fs.readFileSync("./team2.png");
+const team3 = fs.readFileSync("./team3.png");
+const contactPage = fs.readFileSync("./contact.html");
+const contactPageStyles = fs.readFileSync("./contact.css");
+const bgImg = fs.readFileSync("./bg-img.webp");
 
 const server = http.createServer((req, res) => {
   const url = req.url;
@@ -38,11 +38,11 @@ const server = http.createServer((req, res) => {
     res.writeHead(200, { "Content-Type": "text/html" });
     res.write(index);
     res.end();
-  }else if (url === "/home.css") {
+  } else if (url === "/home.css") {
     res.writeHead(200, { "Content-Type": "text/css" });
     res.write(indexStyles);
     res.end();
-  }else if (url === "/about") {
+  } else if (url === "/about") {
     res.writeHead(200, { "Content-Type": "text/html" });
     res.write(aboutPage);
     res.end();
