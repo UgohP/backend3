@@ -31,6 +31,7 @@ router.get("/blog/:id", async (req, res) => {
   }
 });
 
+//the route for the search
 router.post("/search", async (req, res) => {
   try {
     const searchTerm = req.body.searchTerm;

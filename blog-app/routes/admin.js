@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
+const Blog = require("../models/blog");
 
 const adminLayout = "../views/layouts/admin";
 const jwtSecret = process.env.JWT_SECRET;
@@ -53,7 +54,20 @@ router.post("/login", async (req, res) => {
     }
     const token = jwt.sign({ userId: user._id }, jwtSecret);
     res.cookie("token", token, { httpOnly: true });
-    res.redirect("/");
+    res.redirect("/dashboard");
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.get("/dashboard", async (req, res) => {
+  try {
+    const locals = {
+      title: "Dashboard",
+      description: "A Nodejs Blog App built with Nodejs, Express and MongoDB",
+    };
+    const data = await Blog.find();
+    res.render("admin/dashboard", { locals, data, layout: adminLayout });
   } catch (error) {
     console.log(error);
   }
