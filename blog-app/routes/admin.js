@@ -73,4 +73,16 @@ router.get("/dashboard", async (req, res) => {
   }
 });
 
+router.get("/add-blog", async (req, res) => {
+  try {
+    const locals = {
+      title: "Add Blog",
+      description: "A Nodejs Blog App built with Nodejs, Express and MongoDB",
+    };
+    res.render("admin/add-blog", { locals });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 module.exports = router;
