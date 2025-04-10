@@ -85,4 +85,21 @@ router.get("/add-blog", async (req, res) => {
   }
 });
 
+router.post("/add-blog", async (req, res) => {
+  try {
+    try {
+      const newBlog = new Blog({
+        title: req.body.title,
+        body: req.body.body,
+      });
+      await Blog.create(newBlog);
+      res.redirect("/dashboard");
+    } catch (error) {
+      console.log(error);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 module.exports = router;
