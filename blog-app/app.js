@@ -5,7 +5,7 @@ const connectDB = require("./config/db");
 const methodOverride = require("method-override");
 const app = express();
 
-PORT = 4000 || process.env.PORT;
+PORT = 7000 || process.env.PORT;
 connectDB();
 
 app.use(express.static("./public"));
