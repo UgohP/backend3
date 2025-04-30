@@ -60,46 +60,16 @@
 							</tr>
 						</thead>
 						<tbody>
+							<% categories.forEach(cat => { %>
 							<tr>
-								<td>
-									<img src="images/people.png">
-									<p>Desert</p>
-								</td>
-								<td>0</td>
-                                <td><a href="">Edit &nearr;</a></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="images/people.png">
-									<p>Breakfast</p>
-								</td>
-								<td>0</td>
-								<td><a href="">Edit &nearr;</a></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="images/people.png">
-									<p>Lunch</p>
-								</td>
-								<td>0</td>
-                                <td><a href="">Edit &nearr;</a></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="images/people.png">
-									<p>Dinner</p>
-								</td>
-								<td>0</td>
-                                <td><a href="">Edit &nearr;</a></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="images/people.png">
-									<p>Drinks</p>
-								</td>
-								<td>0</td>
-                                <td><a href="">Edit &nearr;</a></td>
-							</tr>
+									<td>
+										<img src="<%= cat.image %>">
+										<p><%= cat.name %></p>
+									</td>
+									<td>0</td>
+									<td><a href="">Edit &nearr;</a></td>
+								</tr>
+								<% }) %>
 						</tbody>
 					</table>
 				</div>
