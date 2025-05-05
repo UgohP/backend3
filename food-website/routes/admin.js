@@ -15,7 +15,8 @@ router.get("/dashboard", async (req, res) => {
 
 router.get("/add", async (req, res) => {
   try {
-    res.render("admin/addNew", { layout: adminLayout });
+    const categories = await Category.find();
+    res.render("admin/addNew", { layout: adminLayout, categories });
   } catch (error) {
     console.log(error);
   }
@@ -32,5 +33,20 @@ router.post("/category", upload.single("image"), async (req, res) => {
     console.log(error);
   }
 });
+
+router.post(
+  "item",
+  upload.fields([
+    { name: "image1", maxCount: 1 },
+    { name: "image2", maxCount: 1 },
+  ]),
+  async (req, res) => {
+    try {
+      res.render("admin/addNew",);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
 
 module.exports = router;

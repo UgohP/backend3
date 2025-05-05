@@ -27,15 +27,15 @@ const ItemSchema = new mongoose.Schema({
   image2: {
     type: String,
   },
-  seasonal: {
+  seasonalItem: {
     type: Boolean,
     default: false,
   },
-  new: {
+  newItem: {
     type: Boolean,
     default: false,
   },
 });
 
-const Item = mongoose.model('Item', ItemSchema)
-module.exports = Item
+const Item = mongoose.model("Item", ItemSchema);
+module.exports = Item;
