@@ -29,7 +29,7 @@
         <label for="category">Category</label>
         <select id="category" name="category">
           <% categories.forEach(category => { %>
-            <option value="<%= category.name %>"><%= category.name %></option>
+            <option value="<%= category._id %>"><%= category.name %></option>
           <% }) %>
         </select>
 

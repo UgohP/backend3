@@ -2,12 +2,14 @@ const express = require("express");
 const router = express.Router();
 const upload = require("../middleware/upload");
 const Category = require("../models/Category");
+const Item = require("../models/Item");
 const adminLayout = "../views/layouts/admin";
 
 router.get("/dashboard", async (req, res) => {
   try {
     const categories = await Category.find();
-    res.render("admin/dashboard", { categories, layout: adminLayout });
+    const items = await Item.find().populate("category");
+    res.render("admin/dashboard", { categories, items, layout: adminLayout });
   } catch (error) {
     console.log(error);
   }
@@ -35,14 +37,42 @@ router.post("/category", upload.single("image"), async (req, res) => {
 });
 
 router.post(
-  "item",
+  "/item",
   upload.fields([
     { name: "image1", maxCount: 1 },
     { name: "image2", maxCount: 1 },
   ]),
   async (req, res) => {
     try {
-      res.render("admin/addNew",);
+      const {
+        name,
+        category,
+        newPrice,
+        oldPrice,
+        description,
+        seasonalItem,
+        newItem,
+      } = req.body;
+      const image1 = req.files.image1
+        ? "/uploads/" + req.files.image1[0].filename
+        : "";
+      const image2 = req.files.image2
+        ? "/uploads/" + req.files.image2[0].filename
+        : "";
+      const newItems = new Item({
+        name,
+        category,
+        newPrice,
+        oldPrice,
+        description,
+        image1,
+        image2,
+        seasonalItem: seasonalItem === "on",
+        newItem: newItem === "on",
+      });
+      await Item.create(newItems);
+      console.log(newItems);
+      res.redirect("/dashboard");
     } catch (error) {
       console.log(error);
     }

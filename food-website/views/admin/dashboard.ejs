@@ -89,51 +89,17 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>
-									<img src="images/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>$ 0.00</td>
-								<td>Breakfast</td>
-                                <td><a href="">Edit &nearr;</a></td>
-							</tr>
-							<tr>
-                                <td>
-									<img src="images/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>$ 0.00</td>
-								<td>Breakfast</td>
-                                <td><a href="">Edit &nearr;</a></td>
-							</tr>
-							<tr>
-                                <td>
-									<img src="images/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>$ 0.00</td>
-								<td>Breakfast</td>
-                                <td><a href="">Edit &nearr;</a></td>
-							</tr>
-							<tr>
-                                <td>
-									<img src="images/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>$ 0.00</td>
-								<td>Breakfast</td>
-                                <td><a href="">Edit &nearr;</a></td>
-							</tr>
-							<tr>
-                                <td>
-									<img src="images/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>$ 0.00</td>
-								<td>Breakfast</td>
-                                <td><a href="">Edit &nearr;</a></td>
-							</tr>
+							<% items.forEach(item => { %>
+								<tr>
+									<td>
+										<img src="<%= item.image1 %>">
+										<p><%= item.name %></p>
+									</td>
+									<td>$<%= item.newPrice %></td>
+									<td><%= item.category.name %></td>
+									<td><a href="">Edit &nearr;</a></td>
+								</tr>
+								<% }) %>
 						</tbody>
 					</table>
 				</div>
