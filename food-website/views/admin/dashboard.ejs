@@ -67,7 +67,11 @@
 										<p><%= cat.name %></p>
 									</td>
 									<td>0</td>
-									<td><a href="">Edit &nearr;</a></td>
+									<td>
+										<a href="/edit-cat/<%= cat._id %>/?_method=PUT">
+											<i class='bx' ><b>Edit &nearr;</b></i>
+										</a>
+									</td>
 								</tr>
 								<% }) %>
 						</tbody>
@@ -97,7 +101,7 @@
 									</td>
 									<td>$<%= item.newPrice %></td>
 									<td><%= item.category.name %></td>
-									<td><a href="">Edit &nearr;</a></td>
+									<td><a href="#">Edit &nearr;</a></td>
 								</tr>
 								<% }) %>
 						</tbody>

@@ -79,4 +79,31 @@ router.post(
   }
 );
 
+router.get("/edit-cat/:id", async (req, res) => {
+  try {
+    const categories = await Category.findOne({ _id: req.params.id });
+    res.render("admin/editCat", { categories, layout: adminLayout });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// EDIT CATEGORY ROUTE
+router.put("/edit-cat/:id", upload.single("image"), async (req, res) => {
+  try {
+    const { name } = req.body;
+
+    const updatedData = { name };
+
+    if (req.file) {
+      updatedData.image = "/uploads/" + req.file.filename;
+    }
+
+    await Category.findByIdAndUpdate(req.params.id, updatedData);
+    res.redirect("/dashboard");
+  } catch (error) {
+    console.log("ERROR:", error);
+    res.status(500).send("Update failed.");
+  }
+});
 module.exports = router;
