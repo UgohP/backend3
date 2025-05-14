@@ -1,17 +1,23 @@
-import Product from "../components/Product";
-const Page = () => {
-  console.log("Paschal");
+import Link from "next/link";
+
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  username: string
+}
+
+const Page = async () => {
+  const data = await fetch("https://jsonplaceholder.typicode.com/users");
+  const users: User[] = await data.json();
   return (
-    <div>
-      <Product />
-      <h3>Users</h3>
-      <ol>
-        <li>User 1</li>
-        <li>User 2</li>
-        <li>User 3</li>
-        <li>User 4</li>
-      </ol>
-    </div>
+    <>
+      <div>
+        {users.map((user) => (
+            <li key={user.id}><Link href={`/users/${user.id}`}>{user.username}</Link></li>
+        ))}
+      </div>
+    </>
   );
 };
 
