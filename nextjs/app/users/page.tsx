@@ -1,10 +1,8 @@
-import Link from "next/link";
-
 interface User {
   id: number;
   name: string;
   email: string;
-  username: string
+  username: string;
 }
 
 const Page = async () => {
@@ -14,7 +12,11 @@ const Page = async () => {
     <>
       <div>
         {users.map((user) => (
-            <li key={user.id}><Link href={`/users/${user.id}`}>{user.username}</Link></li>
+          <li key={user.id}>
+            <b>Name:</b>
+            {user.name} <br />
+            <b>Email:</b> {user.email}
+          </li>
         ))}
       </div>
     </>
